@@ -1,4 +1,5 @@
 const AuthService = require('../services/user')
+const LogicService = require('../services/logic')
 
 class AuthController {
     async register(req, res) {

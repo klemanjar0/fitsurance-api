@@ -131,7 +131,7 @@ class MeasureService {
         });
     }
 
-    async fillUserWithMeasures(id, measureCount) { // use { "id": "0", "count" : "0" } req body
+    async fillUserWithMeasures(id, measureCount, min, max) { // use { "id": "0", "count" : "0" } req body
         const errors = [];
         if(!id) {
             errors.push({
@@ -155,7 +155,7 @@ class MeasureService {
         if(errors.length !== 0) throw errors;
         for(let i = 0; i < measureCount; i++){
             const measure = await Measure.create({
-                heart_rate: Rand.getRandomIntInclusive(60,80),
+                heart_rate: Rand.getRandomIntInclusive(min,max),
                 minutes_slept : 0,
                 steps : Rand.getRandomIntInclusive(0, 3000),
                 ekg_rating : Rand.getRandomArbitrary(5, 10),

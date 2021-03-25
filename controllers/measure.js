@@ -48,7 +48,7 @@ class MeasureController {
     async fillRandom(req, res) {
         console.log(req.body);
         try {
-            res.status(200).json(await CardService.fillUserWithMeasures(req.body.id, req.body.measureCount));
+            res.status(200).json(await CardService.fillUserWithMeasures(req.body.id, req.body.measureCount,req.body.min, req.body.max));
         }
         catch(e) {
             console.log(e);
