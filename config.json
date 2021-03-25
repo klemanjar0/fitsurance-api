@@ -1,0 +1,9 @@
+{
+  "DatabaseSettings" : {
+    "DatabaseName" : "fitsurance",
+    "DatabaseLogin" : "root",
+    "DatabasePassword" : "123456",
+    "DatabaseHost" : "localhost",
+    "DoDropAtStart": "false"
+  }
+}
