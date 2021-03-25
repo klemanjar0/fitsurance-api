@@ -21,13 +21,6 @@ class CardController {
         }
         catch(e) {
             console.log(e);
-
-            console.log("----------");
-            console.log(e);
-
-            console.log("---------");
-
-
             res.status(422).json(e);
         }
     }
