@@ -7,12 +7,14 @@ function StandardDeviation(arr) { // standard deviation
 
     let SDprep = 0;
     for(let key in numbersArr)
-        SDprep += Math.pow((parseFloat(numbersArr[key]) - meanVal),2);
+        SDprep += Math.pow(
+            (parseFloat(numbersArr[key]) - meanVal),
+            2);
     let SDresult = Math.sqrt(SDprep/numbersArr.length - 1);
 
     return SDresult;
 }
-function Exp(number){
+function Exp(number){ // функция корня из Х по числу Ейлера (обратная экспоненциальной)
     return number >= 1 ? Math.pow(number, 1/Math.E): 1;
 }
 

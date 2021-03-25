@@ -1,11 +1,11 @@
-const CardService = require('../services/measure')
+const MeasureService = require('../services/measure')
 
 
 class MeasureController {
     async create(req, res) {
         console.log(req.body);
         try {
-            res.status(200).json(await CardService.createMeasure(req.body));
+            res.status(200).json(await MeasureService.createMeasure(req.body));
         }
         catch(e) {
             console.log(e);
@@ -15,7 +15,7 @@ class MeasureController {
 
     async get(req, res) {
         try {
-            const result = await CardService.getMeasure(req.body.id); // use id in body to get correct value (not card! just id)
+            const result = await MeasureService.getMeasure(req.body.id); // use id in body to get correct value (not card! just id)
             res.status(200).json(result);
             console.log(result);
         }
@@ -27,7 +27,7 @@ class MeasureController {
 
     async delete(req, res) {
         try{
-            const result = await CardService.deleteMeasure(req.body.id); // use body.id in body to get correct value (not card! just id)
+            const result = await MeasureService.deleteMeasure(req.body.id); // use body.id in body to get correct value (not card! just id)
             res.status(200).json(result);
         }
         catch(e) {
@@ -37,7 +37,7 @@ class MeasureController {
     }
     async deleteAll(req, res) {
         try{
-            const result = await CardService.deleteAllUserMeasures(req.body.id); // use body.id in body to get correct value (not card! just id)
+            const result = await MeasureService.deleteAllUserMeasures(req.body.id); // use body.id in body to get correct value (not card! just id)
             res.status(200).json(result);
         }
         catch(e) {
@@ -48,7 +48,7 @@ class MeasureController {
     async fillRandom(req, res) {
         console.log(req.body);
         try {
-            res.status(200).json(await CardService.fillUserWithMeasures(req.body.id, req.body.measureCount,req.body.min, req.body.max));
+            res.status(200).json(await MeasureService.fillUserWithMeasures(req.body.id, req.body.measureCount,req.body.min, req.body.max));
         }
         catch(e) {
             console.log(e);
