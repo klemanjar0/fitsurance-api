@@ -1,9 +1,8 @@
 {
-  "DatabaseSettings" : {
-    "DatabaseName" : "fitsurance",
-    "DatabaseLogin" : "root",
-    "DatabasePassword" : "123456",
-    "DatabaseHost" : "localhost",
-    "DoDropAtStart": "false"
-  }
+  "Name" : "fitsurance",
+  "Login" : "root",
+  "Password" : "123456",
+  "Host" : "localhost",
+  "Port" : 3306,
+  "Dialect" : "mysql"
 }

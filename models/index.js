@@ -1,13 +1,21 @@
 const { Sequelize } = require("sequelize");
 
-const conf = require('../config.json')
+//const conf = require('../config.json') // localhost credentials
+const conf = require('../env.json') // heroku postgresql credentials
+
 
 const sequelize = new Sequelize(
-    conf.DatabaseSettings.DatabaseName,
-    conf.DatabaseSettings.DatabaseLogin,
-    conf.DatabaseSettings.DatabasePassword, {
-    dialect: "mysql",
-    host: conf.DatabaseSettings.DatabaseHost
+    conf.Name,
+    conf.Login,
+    conf.Password, {
+    dialect: conf.Dialect,
+    host: conf.Host,
+        ssl : true,
+        dialectOptions: {
+            ssl: {
+                rejectUnauthorized: false,
+            },
+        }
 });
 
 try {
