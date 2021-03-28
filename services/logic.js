@@ -78,9 +78,27 @@ class LogicService {
             }
         });
 
-        const res = Estimation.sleepDayCount(measures);
+        const values = Estimation.sleepDayCount(measures);
+        let mark = Estimation.Exp(Estimation.StandardDeviation(values));
 
-        return { sleep : res };
+        const avg = Estimation.Average(values);
+
+        switch (avg){
+            case avg >= 480: {mark*=1; break;}
+            case avg < 480 && avg >= 420: {mark*=0.95; break;}
+            case avg < 420 && avg >= 360: {mark*=0.9; break;}
+            case avg < 360 && avg >= 300: {mark*=0.85; break;}
+            case avg < 300: {mark*=0.8; break;}
+        }
+
+        const result = 10 - (mark%10);
+
+        return {
+            mark: mark,
+            average : avg,
+            result: `${result} | 10`,
+            values : values
+        };
     }
     async getRate(id){
 

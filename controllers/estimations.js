@@ -38,34 +38,16 @@ function sleepDayCount(data){
         console.log(`${key}: ${value}`);
     }
     console.log(values);
-    let mark = Exp(StandardDeviation(values));
-
-    const avg = average(values);
-
-    switch (avg){
-        case avg >= 480: {mark*=1; break;}
-        case avg < 480 && avg >= 420: {mark*=0.95; break;}
-        case avg < 420 && avg >= 360: {mark*=0.9; break;}
-        case avg < 360 && avg >= 300: {mark*=0.85; break;}
-        case avg < 300: {mark*=0.8; break;}
-    }
-
-    const result = 10 - (mark%10);
-
-    return {
-        mark: mark,
-        average : avg,
-        result: `${result} | 10`,
-        values : values
-    };
+    return values;
 }
-function average(nums) {
+function Average(nums) {
     return nums.reduce((a, b) => (a + b)) / nums.length;
 }
 
 const Estimations = {
     StandardDeviation : StandardDeviation,
     Exp : Exp,
-    sleepDayCount : sleepDayCount
+    sleepDayCount : sleepDayCount,
+    Average : Average
 }
 module.exports = Estimations;
