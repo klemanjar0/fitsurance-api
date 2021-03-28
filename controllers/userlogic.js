@@ -4,7 +4,7 @@ class UserController {
     async heartEstimate(req, res) {
         console.log(req.body);
         try {
-            res.status(200).json(await LogicService.getHeartRateEstimation(req.body.id));
+            res.status(200).json(await LogicService.getHeartRateEstimation(req.params.id));
         }
         catch(e) {
             res.status(422).json(e);
@@ -13,7 +13,7 @@ class UserController {
     async sleepEstimate(req, res) {
         console.log(req.body);
         try {
-            res.status(200).json(await LogicService.getSleepEstimation(req.body.id));
+            res.status(200).json(await LogicService.getSleepEstimation(req.params.id));
         }
         catch(e) {
             res.status(422).json(e);

@@ -16,7 +16,7 @@ router.get('/me', passport.authenticate('jwt', {session: false}, null), AuthCont
 router.delete('/me', passport.authenticate('jwt', {session: false}, null), AuthController.deleteme);
 //router.put('/me/update-password', passport.authenticate('jwt', {session: false}, null), AuthController.updatepassword)
 
-router.get('/getpulse', UserController.heartEstimate);
-router.get('/getsleep', UserController.sleepEstimate);
+router.get('/:id/getpulse', UserController.heartEstimate);
+router.get('/:id/getsleep', UserController.sleepEstimate);
 
 module.exports = router;

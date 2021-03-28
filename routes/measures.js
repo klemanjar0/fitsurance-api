@@ -4,7 +4,7 @@ var router = express.Router();
 const MeasureController = require('../controllers/measure');
 
 router.post('/create', MeasureController.create);
-router.get('/get', MeasureController.get);
+router.get('/get/:id', MeasureController.get);
 router.delete('/delete', MeasureController.delete);
 router.delete('/deleteall', MeasureController.deleteAll);
 router.post('/fill', MeasureController.fillRandom);

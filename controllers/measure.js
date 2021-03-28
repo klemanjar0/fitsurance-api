@@ -15,7 +15,7 @@ class MeasureController {
 
     async get(req, res) {
         try {
-            const result = await MeasureService.getMeasure(req.body.id); // use id in body to get correct value (not card! just id)
+            const result = await MeasureService.getMeasure(req.params.id); // use id in body to get correct value (not card! just id)
             res.status(200).json(result);
             console.log(result);
         }
