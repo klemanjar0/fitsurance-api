@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 
-//const conf = require('../config.json') // localhost credentials
-const conf = require('../env.json') // heroku postgresql credentials
+const conf = require('../config.json') // localhost credentials
+//const conf = require('../env.json') // heroku postgresql credentials
 
 
 const sequelize = new Sequelize(

@@ -45,6 +45,47 @@ class LogicService {
             values : values
         };
     }
+    async getStepsEstimation(id){
+
+    }
+    async getSleepEstimation(id){
+        const errors = [];
+        if(!id) {
+            errors.push({
+                field: "id",
+                messages: "Empty user ID."
+            })
+            throw errors;
+        }
+        else{
+            const user = await User.findOne({
+                where: {
+                    id: id
+                }
+            });
+            if(!user) {
+                errors.push({
+                    field: 'user',
+                    message: 'User with declarated ID does not exist.'
+                })
+            }
+        }
+        if(errors.length !== 0) throw errors;
+
+        const measures = await Measure.findAll({
+            where: {
+                userId: id
+            }
+        });
+
+        const res = Estimation.sleepDayCount(measures);
+
+        return { sleep : res };
+    }
+    async getRate(id){
+
+    }
+
 }
 
 module.exports = new LogicService();

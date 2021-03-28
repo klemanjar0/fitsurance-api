@@ -129,6 +129,7 @@ class MeasureService {
             console.log(e)
             console.groupEnd()
         });
+        return { userId: user.id, operation : "deleteAllUserMeasures",status : "success"};
     }
 
     async fillUserWithMeasures(id, measureCount, min, max) { // use { "id": "0", "count" : "0" } req body
@@ -156,7 +157,7 @@ class MeasureService {
         for(let i = 0; i < measureCount; i++){
             const measure = await Measure.create({
                 heart_rate: Rand.getRandomIntInclusive(min,max),
-                minutes_slept : 0,
+                minutes_slept : Rand.getRandomIntInclusive(0,20),
                 steps : Rand.getRandomIntInclusive(0, 3000),
                 ekg_rating : Rand.getRandomArbitrary(5, 10),
                 date_measure : new Date(Date.now() - 4000000*i),

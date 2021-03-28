@@ -17,5 +17,6 @@ router.delete('/me', passport.authenticate('jwt', {session: false}, null), AuthC
 //router.put('/me/update-password', passport.authenticate('jwt', {session: false}, null), AuthController.updatepassword)
 
 router.get('/getpulse', UserController.heartEstimate);
+router.get('/getsleep', UserController.sleepEstimate);
 
 module.exports = router;

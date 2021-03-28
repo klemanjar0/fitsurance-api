@@ -10,7 +10,15 @@ class UserController {
             res.status(422).json(e);
         }
     }
-
+    async sleepEstimate(req, res) {
+        console.log(req.body);
+        try {
+            res.status(200).json(await LogicService.getSleepEstimation(req.body.id));
+        }
+        catch(e) {
+            res.status(422).json(e);
+        }
+    }
 }
 
 module.exports = new UserController();
