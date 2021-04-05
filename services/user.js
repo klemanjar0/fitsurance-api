@@ -10,9 +10,7 @@ const validPhone = /^\+?(\d{1,3})?[- .]?\(?(?:\d{2,3})\)?[- .]?\d\d\d[- .]?\d\d\
 class AuthService {
     async register(data) {
         const errors = [];
-
-        console.log("log ----- \n"+ data + data.id + "\n--------")
-
+        console.log(data);
         if(!data) {
             errors.push({
                 field: "data",
@@ -149,7 +147,8 @@ class AuthService {
         const token = await jwt.sign(payload, secret);
 
         return {
-            token: `Bearer ${token}`
+            token: `Bearer ${token}`,
+            user: user
         };
     }
 
@@ -215,7 +214,8 @@ class AuthService {
         const token = await jwt.sign(payload, secret);
 
         return {
-            token: `Bearer ${token}`
+            token: `Bearer ${token}`,
+            user: {...user.dataValues}
         };
     }
 

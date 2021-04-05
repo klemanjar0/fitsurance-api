@@ -102,6 +102,24 @@ class MeasureService {
         }
     }
 
+    async getAllUserMeasure(id) {
+        const measure = await Measure.findAll({where: {
+            userId: id
+        }});
+        const m = measure.map((mea) => {
+            return {
+                id: mea.id,
+                heart_rate : mea.heart_rate,
+                minutes_slept : mea.minutes_slept,
+                steps : mea.steps,
+                ekg_rating : mea.ekg_rating,
+                date_measure : mea.date_measure,
+                userId : mea.userId
+            }
+        })
+        return Array.from(m);
+    }
+
     async deleteMeasure(id) {
         const measure = await Measure.findByPk(id);
         await Measure.destroy({where : {id : measure.id}}).then(()=>{

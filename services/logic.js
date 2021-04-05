@@ -1,6 +1,8 @@
 const { User, Measure } = require('../models');
 const Estimation = require('../controllers/estimations');
 
+const Disc = 1.5;
+
 class LogicService {
     async getHeartRateEstimation(id){
         const errors = [];
@@ -37,10 +39,11 @@ class LogicService {
             Estimation.StandardDeviation(values)
         );
 
-        const result = 10 - (mark%10);
-
+        const result = 10 - (mark%10) +1;
+        const dis = mark * Disc;
         return {
             mark: mark,
+            discount : dis,
             result: `${result} | 10`,
             values : values
         };
@@ -91,11 +94,12 @@ class LogicService {
             case avg < 300: {mark*=0.8; break;}
         }
 
-        const result = 10 - (mark%10);
-
+        const result = 10 - (mark%10) +1;
+        const dis = mark * Disc;
         return {
             mark: mark,
             average : avg,
+            discount : dis,
             result: `${result} | 10`,
             values : values
         };

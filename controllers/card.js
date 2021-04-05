@@ -15,7 +15,7 @@ class CardController {
 
     async get(req, res) {
         try {
-            const result = await CardService.getCard(req.body.id); // use id in body to get correct value (not card! just id)
+            const result = await CardService.getCard(req.body.id);
             res.status(200).json(result);
             console.log(result);
         }
@@ -27,7 +27,7 @@ class CardController {
 
     async delete(req, res) {
         try{
-            const result = await CardService.deleteCard(req.body.id); // use body.id in body to get correct value (not card! just id)
+            const result = await CardService.deleteCard(req.body.id);
             res.status(200).json(result);
         }
         catch(e) {

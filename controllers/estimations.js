@@ -1,6 +1,6 @@
 const moment = require('moment')
 
-function StandardDeviation(arr) { // standard deviation
+function StandardDeviation(arr) { // стандартное отклонение
     const numbersArr = arr;
     let total = 0;
     for(let key in numbersArr)
@@ -16,7 +16,7 @@ function StandardDeviation(arr) { // standard deviation
 
     return SDresult;
 }
-function Exp(number){ // функция корня из Х по числу Ейлера (обратная экспоненциальной)
+function Exp(number){ // функция корня из Х по числу Ейлера
     return number >= 1 ? Math.pow(number, 1/Math.E): 1;
 }
 

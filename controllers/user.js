@@ -1,5 +1,4 @@
 const AuthService = require('../services/user')
-const LogicService = require('../services/logic')
 
 class AuthController {
     async register(req, res) {
@@ -8,6 +7,7 @@ class AuthController {
             res.status(200).json(await AuthService.register(req.body));
         }
         catch(e) {
+
             res.status(422).json(e);
         }
     }
@@ -15,8 +15,9 @@ class AuthController {
     async login(req, res) {
         try {
             const result = await AuthService.login(req.body);
+            console.log(req.body)
+            console.log(result)
             res.status(200).json(result);
-            console.log(result);
         }
         catch(e) {
             console.log(e);

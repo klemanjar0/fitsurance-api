@@ -7,7 +7,7 @@ const UserController = require('../controllers/userlogic');
 const passport = require('passport');
 
 router.get('/', function(req, res, next) {
-  res.send('so what');
+  res.send('Use strict address to get JSON');
 });
 
 router.post('/register', AuthController.register);

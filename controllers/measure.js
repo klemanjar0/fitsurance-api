@@ -25,6 +25,18 @@ class MeasureController {
         }
     }
 
+    async getAll(req, res) {
+        try {
+            const result = await MeasureService.getAllUserMeasure(req.params.id); // use id in body to get correct value (not card! just id)
+            res.status(200).json(result);
+            console.log(result);
+        }
+        catch(e) {
+            console.log(e);
+            res.status(422).json(e);
+        }
+    }
+
     async delete(req, res) {
         try{
             const result = await MeasureService.deleteMeasure(req.body.id); // use body.id in body to get correct value (not card! just id)
