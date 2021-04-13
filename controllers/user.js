@@ -2,7 +2,6 @@ const AuthService = require('../services/user')
 
 class AuthController {
     async register(req, res) {
-        console.log(req.body);
         try {
             res.status(200).json(await AuthService.register(req.body));
         }
@@ -15,8 +14,6 @@ class AuthController {
     async login(req, res) {
         try {
             const result = await AuthService.login(req.body);
-            console.log(req.body)
-            console.log(result)
             res.status(200).json(result);
         }
         catch(e) {

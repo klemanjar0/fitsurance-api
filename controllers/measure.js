@@ -29,7 +29,6 @@ class MeasureController {
         try {
             const result = await MeasureService.getAllUserMeasure(req.params.id); // use id in body to get correct value (not card! just id)
             res.status(200).json(result);
-            console.log(result);
         }
         catch(e) {
             console.log(e);

@@ -44,7 +44,7 @@ class LogicService {
         return {
             mark: mark,
             discount : dis,
-            result: `${result} | 10`,
+            result: result,
             values : values
         };
     }
@@ -82,6 +82,9 @@ class LogicService {
         });
 
         const values = Estimation.sleepDayCount(measures);
+
+        const valuesJSON = Estimation.sleepDayCountJSON(measures);
+
         let mark = Estimation.Exp(Estimation.StandardDeviation(values));
 
         const avg = Estimation.Average(values);
@@ -100,8 +103,8 @@ class LogicService {
             mark: mark,
             average : avg,
             discount : dis,
-            result: `${result} | 10`,
-            values : values
+            result: result,
+            values : valuesJSON
         };
     }
     async getRate(id){

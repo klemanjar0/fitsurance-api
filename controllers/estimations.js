@@ -31,13 +31,20 @@ function getEveryDayMinutesSleep(data){
 
     return result;
 }
+
+function sleepDayCountJSON(data){
+    let values = [];
+    for (const [key, value] of Object.entries(getEveryDayMinutesSleep(data))) {
+        values.push({date: key, value: value});
+    }
+    return values;
+}
+
 function sleepDayCount(data){
     let values = [];
     for (const [key, value] of Object.entries(getEveryDayMinutesSleep(data))) {
         values.push(value);
-        console.log(`${key}: ${value}`);
     }
-    console.log(values);
     return values;
 }
 function Average(nums) {
@@ -48,6 +55,7 @@ const Estimations = {
     StandardDeviation : StandardDeviation,
     Exp : Exp,
     sleepDayCount : sleepDayCount,
+    sleepDayCountJSON : sleepDayCountJSON,
     Average : Average
 }
 module.exports = Estimations;
