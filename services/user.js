@@ -248,6 +248,28 @@ class AuthService {
             console.log(e);
         });
     }
+    async deleteOne(id) {
+        const user = await User.findByPk(id);
+        await User.destroy({where : {id : user.id}}).then(()=>{
+            console.log({
+                id: user.id,
+                email: user.email,
+                operation: 'destroy',
+                status : 'success'
+            });
+        }).catch((e)=>{
+            console.log(e);
+        });
+    }
+    async getAllUsers() {
+        try {
+            const users = await User.findAll();
+            return JSON.stringify(users,null,2);
+        }
+        catch (e){
+            console.log("Bad day, bad things come...")
+        }
+    }
 }
 
 module.exports = new AuthService();

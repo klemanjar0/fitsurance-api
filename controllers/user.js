@@ -43,6 +43,28 @@ class AuthController {
             res.status(401);
         }
     }
+    async deleteOne(req, res) {
+        try{
+            const result = await AuthService.deleteOne(req.params.id);
+            console.log(result)
+            res.status(200).json(result);
+        }
+        catch(e) {
+            console.log(e);
+            res.status(401);
+        }
+    }
+    async getAll(req, res) {
+        try{
+            const result = await AuthService.getAllUsers();
+            console.log(result)
+            res.status(200).json(result);
+        }
+        catch(e) {
+            console.log(e);
+            res.status(401);
+        }
+    }
 }
 
 module.exports = new AuthController();
